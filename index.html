@@ -2,324 +2,287 @@
 <!DOCTYPE html>
 <html lang="vi">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Cố Quận - Một góc cà phê mộc mạc, bình yên giữa Sài Gòn.">
-  <title>Cố Quận | Một góc Sài Gòn xưa</title>
-  <style>
-    :root {
-      --brown: #39271e;
-      --deep: #241912;
-      --cream: #f4eddf;
-      --paper: #e9deca;
-      --gold: #b99a61;
-      --muted: #a99a83;
-    }
-
-    * { box-sizing: border-box; }
-    html { scroll-behavior: smooth; }
-    body {
-      margin: 0;
-      background: var(--cream);
-      color: var(--brown);
-      font-family: Georgia, "Times New Roman", serif;
-    }
-    a { color: inherit; text-decoration: none; }
-    .topline {
-      height: 5px;
-      background: var(--gold);
-    }
-    header {
-      background: var(--deep);
-      color: var(--cream);
-      padding: 22px 7%;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 20px;
-      flex-wrap: wrap;
-    }
-    .brand {
-      font-size: 30px;
-      letter-spacing: 5px;
-      color: var(--gold);
-    }
-    .brand small {
-      display: block;
-      color: var(--cream);
-      font-size: 10px;
-      letter-spacing: 4px;
-      text-align: center;
-      margin-top: 5px;
-    }
-    nav {
-      display: flex;
-      gap: 25px;
-      flex-wrap: wrap;
-      font-size: 13px;
-      letter-spacing: 1px;
-    }
-    nav a:hover { color: var(--gold); }
-    .hero {
-      min-height: 590px;
-      padding: 90px 8%;
-      display: flex;
-      align-items: center;
-      background:
-        linear-gradient(90deg, rgba(31,21,15,.88), rgba(31,21,15,.28)),
-        url("https://images.unsplash.com/photo-1445116572660-236099ec97a0?auto=format&fit=crop&w=1800&q=85")
-        center/cover;
-      color: var(--cream);
-    }
-    .hero-content { max-width: 650px; }
-    .eyebrow {
-      color: var(--gold);
-      letter-spacing: 4px;
-      font-size: 12px;
-      text-transform: uppercase;
-    }
-    h1 {
-      font-size: clamp(48px, 8vw, 82px);
-      font-weight: normal;
-      line-height: 1.05;
-      margin: 22px 0;
-    }
-    .hero p {
-      font-size: 18px;
-      line-height: 1.9;
-      color: #eee3d1;
-      max-width: 510px;
-    }
-    .button {
-      display: inline-block;
-      margin-top: 22px;
-      padding: 14px 27px;
-      border: 1px solid var(--gold);
-      color: var(--cream);
-      letter-spacing: 2px;
-      font-size: 12px;
-    }
-    .button:hover {
-      background: var(--gold);
-      color: var(--deep);
-    }
-    section { padding: 85px 8%; }
-    .section-title {
-      text-align: center;
-      margin-bottom: 45px;
-    }
-    .section-title span {
-      color: #9b7c49;
-      letter-spacing: 4px;
-      font-size: 11px;
-    }
-    h2 {
-      font-size: clamp(32px, 5vw, 46px);
-      font-weight: normal;
-      margin: 13px 0;
-    }
-    .intro {
-      background: var(--paper);
-      text-align: center;
-    }
-    .intro p {
-      max-width: 760px;
-      margin: auto;
-      line-height: 2;
-      font-size: 17px;
-    }
-    .menu-section { background: var(--cream); }
-    .menu-grid {
-      max-width: 900px;
-      margin: auto;
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 0 55px;
-    }
-    .menu-category {
-      color: #967546;
-      font-size: 17px;
-      letter-spacing: 2px;
-      border-bottom: 1px solid var(--gold);
-      padding-bottom: 12px;
-      margin-top: 25px;
-    }
-    .menu-item {
-      display: flex;
-      justify-content: space-between;
-      gap: 15px;
-      padding: 15px 0;
-      border-bottom: 1px dotted #c9b99e;
-      font-size: 16px;
-    }
-    .price { color: #967546; white-space: nowrap; }
-    .journal {
-      background: var(--deep);
-      color: var(--cream);
-    }
-    .journal .section-title h2 { color: var(--cream); }
-    .journal-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 25px;
-    }
-    .journal-card {
-      border: 1px solid #6c5843;
-      padding: 28px;
-      min-height: 210px;
-    }
-    .journal-card small {
-      color: var(--gold);
-      letter-spacing: 2px;
-    }
-    .journal-card h3 {
-      font-size: 23px;
-      font-weight: normal;
-      line-height: 1.4;
-    }
-    .journal-card p {
-      color: #cfc1ad;
-      line-height: 1.8;
-      font-size: 14px;
-    }
-    .contact {
-      text-align: center;
-      background: var(--paper);
-    }
-    .contact p {
-      line-height: 2;
-      font-size: 16px;
-    }
-    footer {
-      background: var(--deep);
-      color: var(--muted);
-      text-align: center;
-      padding: 30px 15px;
-      font-size: 12px;
-      letter-spacing: 2px;
-    }
-    @media (max-width: 650px) {
-      header { justify-content: center; }
-      nav { justify-content: center; gap: 14px; }
-      .hero { min-height: 500px; padding: 65px 7%; }
-      .menu-grid, .journal-grid { grid-template-columns: 1fr; }
-      section { padding: 65px 7%; }
-    }
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cố Quận | Coffee & Memory</title>
+<meta name="description" content="Cố Quận - Cà phê, ký ức và bình yên.">
+<style>
+:root {
+  --brown: #3b2119;
+  --deep: #291711;
+  --cream: #f4e8d2;
+  --gold: #b99460;
+  --paper: #ead9bd;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body {
+  background: var(--cream);
+  color: var(--brown);
+  font-family: Georgia, serif;
+}
+header {
+  min-height: 88px;
+  padding: 14px 5%;
+  background: var(--paper);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  border-bottom: 1px solid #c5a77e;
+}
+.logo { text-align: center; white-space: nowrap; }
+.logo h1 { font-size: 29px; letter-spacing: 2px; }
+.logo span { font-size: 14px; font-style: italic; }
+nav { display: flex; gap: 28px; flex-wrap: wrap; }
+nav a {
+  color: var(--brown);
+  text-decoration: none;
+  font-size: 16px;
+}
+nav a:hover { color: #a46d36; }
+.hero {
+  min-height: 650px;
+  background:
+    linear-gradient(90deg, rgba(25,14,10,.85), rgba(25,14,10,.2)),
+    url("coquan.jpg") center 45% / cover no-repeat;
+  display: flex;
+  align-items: center;
+  padding: 70px 9%;
+  color: #fff0d8;
+}
+.hero-content { max-width: 560px; }
+.eyebrow {
+  letter-spacing: 5px;
+  font-size: 12px;
+  margin-bottom: 25px;
+}
+.hero h2 {
+  font-size: clamp(48px, 7vw, 82px);
+  font-weight: normal;
+  font-style: italic;
+  line-height: 1.05;
+}
+.hero .english {
+  font-size: 25px;
+  margin: 18px 0;
+}
+.hero .tagline {
+  font-size: 19px;
+  font-style: italic;
+  margin: 25px 0 35px;
+}
+.button {
+  display: inline-block;
+  padding: 14px 25px;
+  border: 1px solid #f4dfbd;
+  color: #fff0d8;
+  text-decoration: none;
+  transition: .3s;
+}
+.button:hover {
+  background: #f4dfbd;
+  color: var(--brown);
+}
+section { padding: 85px 8%; }
+.section-title {
+  text-align: center;
+  margin-bottom: 25px;
+}
+.section-title small {
+  letter-spacing: 4px;
+  color: #99754e;
+}
+.section-title h2 {
+  font-size: 38px;
+  font-weight: normal;
+  margin-top: 12px;
+}
+.intro {
+  text-align: center;
+  max-width: 750px;
+  margin: auto;
+  line-height: 1.9;
+  font-size: 18px;
+}
+.menu-section { background: #e9dac3; }
+.menu-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 22px;
+  margin-top: 45px;
+}
+.menu-card {
+  padding: 35px 20px;
+  text-align: center;
+  border: 1px solid #bca17c;
+  background: rgba(255,255,255,.22);
+}
+.menu-card h3 {
+  font-size: 25px;
+  font-weight: normal;
+  margin-bottom: 15px;
+}
+.menu-card p { line-height: 1.7; }
+.story {
+  background: var(--deep);
+  color: var(--cream);
+  text-align: center;
+}
+.story .intro { color: #e5d1b5; }
+.blog {
+  background: #f4e8d2;
+  text-align: center;
+}
+.blog .intro { margin-bottom: 30px; }
+.order {
+  background: #dfc9a9;
+  text-align: center;
+}
+.order p {
+  margin: 20px auto;
+  line-height: 1.8;
+}
+.order .button {
+  color: var(--brown);
+  border-color: var(--brown);
+}
+.order .button:hover {
+  background: var(--brown);
+  color: white;
+}
+footer {
+  background: var(--deep);
+  color: #e9d6b9;
+  text-align: center;
+  padding: 35px 15px;
+  line-height: 2;
+}
+@media(max-width: 750px) {
+  header { flex-direction: column; }
+  nav { justify-content: center; gap: 15px; }
+  nav a { font-size: 14px; }
+  .hero {
+    min-height: 560px;
+    padding: 55px 7%;
+    background-position: 55% center;
+  }
+  .hero h2 { font-size: 53px; }
+  .menu-grid { grid-template-columns: 1fr; }
+  section { padding: 65px 7%; }
+}
+</style>
 </head>
 <body>
-  <div class="topline"></div>
 
-  <header>
-    <a class="brand" href="#">CỐ QUẬN
-      <small>MỘT GÓC SÀI GÒN XƯA</small>
-    </a>
-    <nav>
-      <a href="#gioi-thieu">VỀ CỐ QUẬN</a>
-      <a href="#thuc-don">THỰC ĐƠN</a>
-      <a href="#chuyen">GÓC TẢN MẠN</a>
-      <a href="#lien-he">LIÊN HỆ</a>
-    </nav>
-  </header>
+<header>
+  <div class="logo">
+    <h1>CỐ QUẬN</h1>
+    <span>Coffee & Memory</span>
+  </div>
+  <nav>
+    <a href="#home">Trang chủ</a>
+    <a href="#menu">Thực đơn</a>
+    <a href="#story">Câu chuyện</a>
+    <a href="#blog">Góc văn hoá</a>
+    <a href="#order">Đặt hàng</a>
+  </nav>
+</header>
 
-  <main>
-    <div class="hero">
-      <div class="hero-content">
-        <div class="eyebrow">Cà phê · Ký ức · Bình yên</div>
-        <h1>Một chút<br>Sài Gòn xưa.</h1>
-        <p>
-          Giữa những ngày vội vã, mong bạn tìm thấy ở Cố Quận
-          một góc nhỏ để ngồi xuống, nhấp một ngụm cà phê
-          và để lòng mình chậm lại.
-        </p>
-        <a class="button" href="#gioi-thieu">KHÁM PHÁ CỐ QUẬN</a>
+<main>
+  <div class="hero" id="home">
+    <div class="hero-content">
+      <div class="eyebrow">CÀ PHÊ · KÝ ỨC · BÌNH YÊN</div>
+      <h2>Cố Quận</h2>
+      <div class="english">Coffee & Memory</div>
+      <p class="tagline">Cà phê · Ký ức · Bình yên</p>
+      <a class="button" href="#story">Khám phá Cố Quận →</a>
+    </div>
+  </div>
+
+  <section>
+    <div class="section-title">
+      <small>WELCOME TO CỐ QUẬN</small>
+      <h2>Một góc nhỏ để dừng chân</h2>
+    </div>
+    <p class="intro">
+      Giữa những ngày vội vã, Cố Quận dành một khoảng không
+      gian nhỏ cho những ai muốn chậm lại, nhâm nhi một ly
+      cà phê và tận hưởng những điều bình dị.
+    </p>
+  </section>
+
+  <section class="menu-section" id="menu">
+    <div class="section-title">
+      <small>OUR MENU</small>
+      <h2>Thực đơn Cố Quận</h2>
+    </div>
+    <div class="menu-grid">
+      <div class="menu-card">
+        <h3>Cà phê</h3>
+        <p>Đậm đà hương vị quen thuộc.</p>
+      </div>
+      <div class="menu-card">
+        <h3>Matcha & Cacao</h3>
+        <p>Những lựa chọn ngọt ngào và dịu nhẹ.</p>
+      </div>
+      <div class="menu-card">
+        <h3>Trà trái cây</h3>
+        <p>Tươi mát cho những ngày nhiều nắng.</p>
       </div>
     </div>
+  </section>
 
-    <section class="intro" id="gioi-thieu">
-      <div class="section-title">
-        <span>CÂU CHUYỆN CỦA CHÚNG MÌNH</span>
-        <h2>Cố Quận – Chốn nhỏ để thương</h2>
-      </div>
-      <p>
-        Cố Quận không chỉ là một nơi để uống cà phê.
-        Đó là một góc nhỏ được gom góp từ những điều bình dị:
-        một ly nước ngon, một cuộc trò chuyện thân tình,
-        một buổi chiều lặng gió và những câu chuyện chưa kể.
-        Mong mỗi lần ghé thăm, bạn đều cảm thấy thân quen
-        như đang trở về một nơi đã từng thuộc về mình.
-      </p>
-    </section>
+  <section class="story" id="story">
+    <div class="section-title">
+      <small>OUR STORY</small>
+      <h2>Câu chuyện Cố Quận</h2>
+    </div>
+    <p class="intro">
+      Cố Quận không chỉ là nơi để thưởng thức cà phê.
+      Đó còn là nơi lưu giữ những khoảnh khắc đời thường,
+      những cuộc trò chuyện và những ký ức đẹp.
+    </p>
+  </section>
 
-    <section class="menu-section" id="thuc-don">
-      <div class="section-title">
-        <span>MỘT CHÚT NGỌT NGÀO</span>
-        <h2>Thực đơn nhà Cố</h2>
-      </div>
+  <section class="blog" id="blog">
+    <div class="section-title">
+      <small>COFFEE & CULTURE</small>
+      <h2>Góc văn hoá</h2>
+    </div>
+    <p class="intro">
+      Những câu chuyện về cà phê, văn hoá, đời sống
+      và những điều thú vị quanh chúng ta.
+    </p>
+    <a class="button" href="#order"
+       style="color:#3b2119;border-color:#3b2119">
+       Khám phá thêm →
+    </a>
+  </section>
 
-      <div class="menu-grid">
-        <div>
-          <div class="menu-category">CÀ PHÊ</div>
-          <div class="menu-item"><span>Cà phê đen</span><b class="price">17.000đ</b></div>
-          <div class="menu-item"><span>Cà phê sữa</span><b class="price">20.000đ</b></div>
-          <div class="menu-item"><span>Bạc xỉu</span><b class="price">23.000đ</b></div>
-          <div class="menu-item"><span>Cà phê kem muối</span><b class="price">25.000đ</b></div>
-          <div class="menu-category">MATCHA</div>
-          <div class="menu-item"><span>Matcha Latte</span><b class="price">27.000đ</b></div>
-          <div class="menu-item"><span>Matcha Xoài</span><b class="price">30.000đ</b></div>
-        </div>
-        <div>
-          <div class="menu-category">TRÀ TRÁI CÂY</div>
-          <div class="menu-item"><span>Trà trái cây</span><b class="price">27.000đ</b></div>
-          <div class="menu-category">CACAO</div>
-          <div class="menu-item"><span>Cacao sữa đá</span><b class="price">20.000đ</b></div>
-          <div class="menu-item"><span>Cacao kem muối</span><b class="price">25.000đ</b></div>
-          <div class="menu-item"><span>Cacao Socola Giòn</span><b class="price">30.000đ</b></div>
-        </div>
-      </div>
-    </section>
+  <section class="order" id="order">
+    <div class="section-title">
+      <small>VISIT US</small>
+      <h2>Ghé thăm Cố Quận</h2>
+    </div>
+    <p>
+      Một ly cà phê, một góc bình yên.<br>
+      Cố Quận luôn chờ bạn ghé chơi.
+    </p>
+    <a class="button" href="#home">Trở về đầu trang ↑</a>
+  </section>
+</main>
 
-    <section class="journal" id="chuyen">
-      <div class="section-title">
-        <span>GÓC NHỎ ĐỂ ĐỌC VÀ NGẪM</span>
-        <h2>Chuyện bên ly cà phê</h2>
-      </div>
-      <div class="journal-grid">
-        <article class="journal-card">
-          <small>CHUYỆN ĐỜI THƯỜNG</small>
-          <h3>Đôi khi, chậm lại cũng là một cách tiến về phía trước.</h3>
-          <p>Những suy nghĩ nhỏ nhặt giữa một ngày bình thường.</p>
-        </article>
-        <article class="journal-card">
-          <small>VĂN HÓA & KÝ ỨC</small>
-          <h3>Một chút hoài niệm về Sài Gòn.</h3>
-          <p>Những điều cũ kỹ mà người ta vẫn muốn giữ gìn.</p>
-        </article>
-        <article class="journal-card">
-          <small>CHUYỆN NHÀ CỐ</small>
-          <h3>Phía sau một ly cà phê là một câu chuyện.</h3>
-          <p>Những ngày vui, những ngày bận rộn và hành trình của Cố Quận.</p>
-        </article>
-      </div>
-    </section>
+<footer>
+  <h2>CỐ QUẬN</h2>
+  <p>Coffee & Memory</p>
+  <p>Cà phê · Ký ức · Bình yên</p>
+  <p>© 2026 Cố Quận. All rights reserved.</p>
+  <p>cafecoquan.com</p>
+</footer>
 
-    <section class="contact" id="lien-he">
-      <div class="section-title">
-        <span>HẸN GẶP BẠN Ở CỐ QUẬN</span>
-        <h2>Một góc nhỏ giữa lòng Quận 12</h2>
-      </div>
-      <p>
-        Mở cửa: 08:00 – 23:00<br>
-        Nghỉ hàng tuần: Thứ Sáu<br>
-        Khu vực: Quận 12, Thành phố Hồ Chí Minh
-      </p>
-      <p>Thông tin đặt món và địa chỉ chi tiết sẽ được cập nhật tại đây.</p>
-    </section>
-  </main>
-
-  <footer>
-    CỐ QUẬN · MỘT GÓC SÀI GÒN XƯA<br><br>
-    © 2026 CO QUAN. MADE WITH LOVE.
-  </footer>
 </body>
 </html>
